@@ -25,7 +25,7 @@ public class AccountServiceImpl {
 
     public void updateOrgRole(AccountReq accountReq) {
         ResponseEntity<String> response = restTemplate.postForEntity(
-            internalURL + "Creditworthiness/save/" + accountReq.getIdcatOctxVAcc(),
-            internalURL + "Creditworthiness/save/" + accountReq.getIdcatOctxVAcc())
+            internalURL + "/Creditworthiness/save/" + accountReq.getIdcatOctxVAcc(),
+            internalURL + "/Creditworthiness/save/" + accountReq.getIdcatOctxVAcc())
     }
 }
