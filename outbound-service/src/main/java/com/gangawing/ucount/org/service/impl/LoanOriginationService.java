@@ -245,7 +245,7 @@ public class LoanOriginationService {
 
     private void updateOimDatabaseOnNameUpdate(String idCntprtyAcct) {
         LOGGER.info("Org API: OIM Database Sync triggered for counterparty account: {}", idCntprtyAcct);
-        String targetUrl = dataServiceURL + "/account/lookup";
+        String targetUrl = dataServiceURL + "/rates/quote";
         performOimSyncGet(targetUrl, idCntprtyAcct, "FAMILY_NAME_UPDATE", String.class);
     }
 
