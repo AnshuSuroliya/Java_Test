@@ -18,7 +18,7 @@ public class OimWebClientServiceImpl {
 
     public void pushOimEvent(String url, Class<?> responseType) {
         webClient.get()
-            .uri("workflow/status/{orgId}")
+            .uri("/workflow/status/{orgId}")
             .headers(h -> h.add("Authorization", oAuthTokenCache.getOAuthAccessToken()))
             .exchangeToMono(clientResponse -> {
                 if (clientResponse.statusCode().is4xxClientError()) {

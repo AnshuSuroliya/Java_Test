@@ -15,7 +15,7 @@ public class OrgChangesController {
         HttpEntity<Object> requestEntity = new HttpEntity<>(orgChangePayload);
 
         ResponseEntity<Object> exchange = restTemplate.exchange(
-            "EmailNotification/send",
+            "/EmailNotification/send",
             HttpMethod.POST,
             requestEntity,
             Object.class

@@ -15,7 +15,7 @@ public class ApplicationController {
         HttpEntity<Object> requestEntity = new HttpEntity<>(applicationSyncRequest);
 
         ResponseEntity<Object> exchange = restTemplate.exchange(
-            "WorkFlow/submit",
+            "/WorkFlow/submit",
             HttpMethod.POST,
             requestEntity,
             Object.class

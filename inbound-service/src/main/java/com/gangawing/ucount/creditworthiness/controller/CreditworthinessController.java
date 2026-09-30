@@ -23,7 +23,7 @@ public class CreditworthinessController {
         return CreditworthinessService.lookupCreditworthiness();
     }
 
-    @PostMapping(value = "/save", produces = "application/json")
+    @PostMapping(value = "/save/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody UcsCreditworthinessSaveDTO saveCreditworthinessByorgId(
         @RequestBody UcsCreditworthinessSaveDTO ucsCreditworthinessSaveDTO, Optional.of("false"));

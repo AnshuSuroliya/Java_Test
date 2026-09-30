@@ -18,7 +18,7 @@ public class APIServiceImpl {
 
     public void fetchResourceAsync(String url, Class<?> responseType) {
         webClient.get()
-            .uri("Creditworthiness/lookup")
+            .uri("/Creditworthiness/lookup")
             .headers(h -> h.add("Authorization", oAuthTokenCache.getOAuthAccessToken()))
             .exchangeToMono(clientResponse -> {
                 if (clientResponse.statusCode().is4xxClientError()) {
