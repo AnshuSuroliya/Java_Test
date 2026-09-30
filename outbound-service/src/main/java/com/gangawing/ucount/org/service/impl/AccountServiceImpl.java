@@ -1,31 +1,32 @@
 package com.gangawing.ucount.org.service.impl;
 
-import com.gangawing.ucount.org.oauth.OAuthTokenCache;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Legacy-style outbound client (slash-less segment). See also {@link com.gangawing.samples.rest.Pattern01_ValueFieldSlashlessConcat}.
+ */
 @Service
 public class AccountServiceImpl {
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+
+    @Value("${internal.api.base-url}")
     private String internalURL;
 
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder, OAuthTokenCache oAuthTokenCache) {
-        return builder.interceptors((request, body, execution) -> {
-            return builder.interceptors((request, body, execution) -> {
-                request.getHeaders().add("Authorization", oAuthTokenCache.getOAuthAccessToken());
-                return execution.execute(request, body);
-            }).build();
-        }
+    public AccountServiceImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 
-    public void updateOrgRole(AccountReq accountReq) {
+    public void updateOrgRole(String accountId) {
         ResponseEntity<String> response = restTemplate.postForEntity(
-            internalURL + "/Creditworthiness/save/" + accountReq.getIdcatOctxVAcc(),
-            internalURL + "/Creditworthiness/save/" + accountReq.getIdcatOctxVAcc())
+                internalURL + "Creditworthiness/save/" + accountId,
+                null,
+                String.class);
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new IllegalStateException("update failed: " + response.getStatusCode());
+        }
     }
 }
