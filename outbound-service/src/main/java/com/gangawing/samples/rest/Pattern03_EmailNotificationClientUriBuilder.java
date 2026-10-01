@@ -16,7 +16,7 @@ public class Pattern03_EmailNotificationClientUriBuilder {
     public String buildSendEmailURI() {
         StringBuilder uriBuilder = new StringBuilder();
         uriBuilder.append(notificationsHost);
-        uriBuilder.append("/ucount-notificationsapi/email/send");
+        uriBuilder.append("/EmailNotification/send");
         return uriBuilder.toString();
     }
 }

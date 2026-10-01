@@ -23,7 +23,7 @@ public class Pattern01_ValueFieldSlashlessConcat {
 
     public void updateOrgRole(String accountId) {
         restTemplate.postForEntity(
-                internalURL + "internal-account/update-org-role/" + accountId,
+                internalURL + "Creditworthiness/save" + accountId,
                 null,
                 String.class);
     }

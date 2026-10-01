@@ -28,7 +28,7 @@ public class Pattern04_SameClassUriBuilderClient {
     public String buildSendEmailURI() {
         StringBuilder uriBuilder = new StringBuilder();
         uriBuilder.append("https://host.example.com");
-        uriBuilder.append("/ucount-notificationsapi/email/send");
+        uriBuilder.append("/EmailNotification/send");
         return uriBuilder.toString();
     }
 }
